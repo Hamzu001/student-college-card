@@ -11,35 +11,38 @@ async function sendOtpToEmail(reseverEmail, token) {
     secureConnection: false,
     auth: {
       user: process.env.AUTH_MAIL,
-      pass: process.env.AUTH_PASSWORD
+      pass: process.env.AUTH_PASSWORD,
     },
     tls: {
-      rejectUnauthorized: true
-    }
+      rejectUnauthorized: true,
+    },
   })
 
   let mailOptions = {
     from: process.env.AUTH_MAIL,
     to: reseverEmail,
     subject: "Quiz App: Verify your email",
-    html: `<h2 style="color:black;text-align:center;">Quiz App send you email for otp varification<br>Your OTP is here <br> <b> <a href="${process.env.WEB_URL}/api/v1/user/verify?token=` + token +`">Link Here</a>  </b> </h2>`
+    html:
+      `<h2 style="color:black;text-align:center;">Quiz App send you email for otp varification<br>Your OTP is here <br> <b> <a href="${process.env.WEB_URL}/api/v1/user/verify?token=` +
+      token +
+      `">Link Here</a>  </b> </h2>`,
   }
-  
+
   // send otp to email
-  transporter.sendMail(mailOptions, async function (error, info) {
-    if (error) {
-      console.log({ error })
-      
-      // throw new ApiError(500, "send otp to email error")
-    } else {
-      console.log(info.response)
-    }
+
+  const sendMail = new Promise((resolve) => {
+    transporter.sendMail(mailOptions, async function (error, info) {
+      resolve({ error, info })
+    })
   })
+
+  const { error, info } = await sendMail
+
+  if (error) {
+    console.log({ error })
+  } else {
+    console.log(info.response)
+  }
 }
 
 export { sendOtpToEmail }
-
-
-
-
-
