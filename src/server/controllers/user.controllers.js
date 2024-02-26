@@ -38,7 +38,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   const { data: generateToken } = signJWT({ id: user._id })
 
-  asyncTryCatch(() => sendOtpToEmail(email, generateToken))
+  await asyncTryCatch(() => sendOtpToEmail(email, generateToken))
 
   return res
     .status(200)
