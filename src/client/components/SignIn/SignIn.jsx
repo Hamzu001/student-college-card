@@ -41,7 +41,7 @@ const SignIn = () => {
     }
 
     setUser(userData.data)
-    navigate("/home")
+    navigate("/student-protal")
   }
 
   return (
