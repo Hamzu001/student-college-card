@@ -1,9 +1,11 @@
 import React from "react"
+import Cards from "./Cards"
 
 const Courses = () => {
   return (
     <div>
-      <p>Courses Heree! </p>
+      <p>All courses here</p>
+      <Cards />
     </div>
   )
 }

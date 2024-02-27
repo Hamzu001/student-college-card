@@ -1,54 +1,56 @@
 import React, { useContext, useState } from "react"
-import { Context } from "../Context"
-import { capitalizeFirstLetter } from "../../utils"
 import { Link } from "react-router-dom"
-import { GiHamburgerMenu } from "react-icons/gi"
-import { LuLayoutDashboard } from "react-icons/lu"
-import { MdOutlineQuiz } from "react-icons/md"
-import { IoMdNotificationsOutline } from "react-icons/io"
-import { BsBookmarkPlus } from "react-icons/bs"
-import { PiNotebookLight } from "react-icons/pi"
-import { LiaIdCard } from "react-icons/lia"
-import { TbLogout2 } from "react-icons/tb"
-import { PiStudentBold } from "react-icons/pi"
+import {
+  Context,
+  capitalizeFirstLetter,
+  GiHamburgerMenu,
+  LuLayoutDashboard,
+  MdOutlineQuiz,
+  IoMdNotificationsOutline,
+  BsBookmarkPlus,
+  PiNotebookLight,
+  LiaIdCard,
+  TbLogout2,
+  PiStudentBold,
+} from "../../utils/imports.js"
 
-const Portal = () => {
+const Sidebar = ({ component }) => {
   const { user } = useContext(Context)
   const [sidebarToggle, setSidebarToggle] = useState(false)
 
   const sideBarLinks = [
     {
-      path: "/",
+      path: "/student-portal/dashboard",
       logo: <LuLayoutDashboard />,
       name: "Dashboard",
       badge: "",
     },
     {
-      path: "/",
+      path: "/student-portal/register",
       logo: <LiaIdCard />,
       name: "College Card",
       badge: "",
     },
     {
-      path: "/",
+      path: "/student-portal/courses",
       logo: <PiNotebookLight />,
       name: "Courses",
       badge: "",
     },
     {
-      path: "/",
+      path: "/student-portal/notifications",
       logo: <IoMdNotificationsOutline />,
       name: "Notifications",
       badge: "2",
     },
     {
-      path: "/",
+      path: "/student-portal/enrolled",
       logo: <BsBookmarkPlus />,
       name: "Enrolled",
       badge: "3",
     },
     {
-      path: "/",
+      path: "/student-portal/quizes",
       logo: <MdOutlineQuiz />,
       name: "Quizes",
       badge: "",
@@ -112,7 +114,7 @@ const Portal = () => {
 
         <div className="p-4 sm:ml-64">
           <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-            {/* {component} */}
+            {component}
           </div>
         </div>
       </div>
@@ -120,4 +122,4 @@ const Portal = () => {
   )
 }
 
-export default Portal
+export default Sidebar

@@ -1,10 +1,11 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import Cards from "./Courses/Cards"
 
 const Home = () => {
   return (
-    <div className="container flex  justify-center items-center">
-      <p>Lorem ipsum</p>
+    <div className="container">
+      {/* <p>Lorem ipsum</p> */}
+      <Cards />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import Form from "./Form.jsx"
 import { useNavigate } from "react-router-dom"
 import { Context } from "../Context.jsx"
-import { ToastContainer, toast } from "react-toastify"
+import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
 const SignIn = () => {
@@ -41,7 +41,7 @@ const SignIn = () => {
     }
 
     setUser(userData.data)
-    navigate("/student-protal")
+    navigate("/student-portal/dashboard")
   }
 
   return (
@@ -54,12 +54,6 @@ const SignIn = () => {
                 SignIn
               </h1>
               <Form formSubmit={handleSubmit} />
-              <ToastContainer
-                position="top-left"
-                autoClose={3000}
-                closeOnClick
-                theme="light"
-              />
             </div>
           </div>
         </div>

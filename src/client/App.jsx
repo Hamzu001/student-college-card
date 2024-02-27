@@ -1,14 +1,22 @@
 import "./App.css"
 import { useContext, useEffect } from "react"
 import { Routes, Route, Navigate, Outlet } from "react-router-dom"
-import { Context } from "./components/Context.jsx"
-import Home from "./components/Home.jsx"
-import SignIn from "./components/SignIn/SignIn.jsx"
-import Oops from "./components/Oops.jsx"
-import SignUp from "./components/SignUp/SignUp.jsx"
-import Portal from "./components/studentPortal/Portal.jsx"
-import Navbar from "./components/Header/Navbar.jsx"
-import Courses from "./components/Courses/Courses.jsx"
+import { ToastContainer } from "react-toastify"
+import {
+  Register,
+  Sidebar,
+  Quizes,
+  Notifications,
+  Enrolled,
+  Dashboard,
+  SignIn,
+  SignUp,
+  Oops,
+  Home,
+  Navbar,
+  Courses,
+  Context,
+} from "./utils/imports.js"
 
 function Private({ func, path }) {
   return func() ? <Outlet /> : <Navigate to={path} replace={true} />
@@ -25,16 +33,52 @@ function App() {
 
   return (
     <>
+      <ToastContainer
+        position="top-left"
+        autoClose={3000}
+        closeOnClick
+        theme="light"
+      />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
 
         <Route element={<Private func={() => user?.userName} path="/signin" />}>
-          <Route path="/student-protal" element={<Portal />} />
+          <Route
+            path="/student-portal/dashboard"
+            element={<Sidebar component={<Dashboard />} />}
+          />
+          <Route
+            path="/student-portal/register"
+            element={<Sidebar component={<Register />} />}
+          />
+          <Route
+            path="/student-portal/enrolled"
+            element={<Sidebar component={<Enrolled />} />}
+          />
+          <Route
+            path="/student-portal/courses"
+            element={<Sidebar component={<Courses />} />}
+          />
+          <Route
+            path="/student-portal/notifications"
+            element={<Sidebar component={<Notifications />} />}
+          />
+          <Route
+            path="/student-portal/quizes"
+            element={<Sidebar component={<Quizes />} />}
+          />
         </Route>
 
-        <Route element={<Private func={() => !user?.userName} path="/home" />}>
+        <Route
+          element={
+            <Private
+              func={() => !user?.userName}
+              path="/student-portal/dashboard"
+            />
+          }
+        >
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
         </Route>

@@ -84,7 +84,7 @@ const verifyToken = asyncHandler(async (req, res) => {
   const { data: generateToken } = signJWT({ id: user._id })
 
   res.cookie("token", generateToken, { httpOnly: true, secure: true })
-  res.redirect(302, "/home")
+  res.redirect(302, "/student-portal/dashboard")
 })
 
 // user login/signin ->> /api/v1/user/login

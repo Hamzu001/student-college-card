@@ -3,7 +3,8 @@ import { Link, NavLink, useNavigate } from "react-router-dom"
 import { Context } from "../Context.jsx"
 import { FaSchool } from "react-icons/fa"
 import { GiHamburgerMenu } from "react-icons/gi"
-import { MdOutlineKeyboardDoubleArrowUp } from "react-icons/md"
+import { FiLogIn } from "react-icons/fi"
+import { SiGnuprivacyguard } from "react-icons/si"
 
 const Navbar = () => {
   const [state, setState] = useState(true)
@@ -26,24 +27,24 @@ const Navbar = () => {
     }
   }
 
-  const navLinks = [
-    {
-      name: "Home",
-      path: "/",
-    },
-    {
-      name: "Courses",
-      path: "/courses",
-    },
-    {
-      name: "Contact",
-      path: "/contact",
-    },
-  ]
+  // const navLinks = [
+  //   {
+  //     name: "Home",
+  //     path: "/",
+  //   },
+  //   {
+  //     name: "Courses",
+  //     path: "/courses",
+  //   },
+  //   {
+  //     name: "Contact",
+  //     path: "/contact",
+  //   },
+  // ]
 
   return (
     <nav className="bg-gray-200 border-gray-200 px-2 lg:px-6 p-2">
-      <div className="flex flex-wrap justify-between p-0 items-center mx-auto max-w-screen-xl">
+      <div className="flex flex-wrap justify-between p-1 items-center mx-auto max-w-screen-xl">
         <Link to="/" className="flex items-center">
           <FaSchool />
           <span className=" ml-2 text-xl font-semibold whitespace-nowrap"></span>
@@ -55,12 +56,14 @@ const Navbar = () => {
               <button onClick={logoutHandler}>Logout</button>
             </div>
           ) : (
-            <div>
+            <div className="flex row">
               <Link to="/signin" className="mr-4">
+                {/* <FiLogIn /> */}
                 SignIn
               </Link>
               <Link to="/signup" className="mr-3">
                 SignUp
+                {/* <SiGnuprivacyguard /> */}
               </Link>
             </div>
           )}
@@ -73,7 +76,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div
+        {/* <div
           className={`${
             state && "hidden"
           }  justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
@@ -107,7 +110,7 @@ const Navbar = () => {
               <MdOutlineKeyboardDoubleArrowUp />
             </button>
           </ul>
-        </div>
+        </div> */}
       </div>
     </nav>
   )
