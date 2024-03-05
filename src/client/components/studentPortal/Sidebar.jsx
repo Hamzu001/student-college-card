@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import {
   Context,
   capitalizeFirstLetter,
@@ -16,7 +16,24 @@ import {
 
 const Sidebar = ({ component }) => {
   const { user } = useContext(Context)
-  const [sidebarToggle, setSidebarToggle] = useState(false)
+  const navigate = useNavigate()
+  const [isVisible, setIsVisible] = useState(false)
+
+  const logoutHandler = async () => {
+    try {
+      const fetchData = await fetch("/api/v1/user/logout", {
+        method: "POST",
+      })
+      const logoutUser = await fetchData.json()
+      // console.log(logoutUser)
+      if (logoutUser.statusCode == 200) {
+        navigate("/")
+        setUser(logoutUser)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const sideBarLinks = [
     {
@@ -26,7 +43,7 @@ const Sidebar = ({ component }) => {
       badge: "",
     },
     {
-      path: "/student-portal/register",
+      path: "/student-portal/create-college-card",
       logo: <LiaIdCard />,
       name: "College Card",
       badge: "",
@@ -52,13 +69,7 @@ const Sidebar = ({ component }) => {
     {
       path: "/student-portal/quizes",
       logo: <MdOutlineQuiz />,
-      name: "Quizes",
-      badge: "",
-    },
-    {
-      path: "/",
-      logo: <TbLogout2 />,
-      name: "Logout",
+      name: "Quizzes",
       badge: "",
     },
   ]
@@ -67,7 +78,7 @@ const Sidebar = ({ component }) => {
     <div>
       <div className="container">
         <button
-          onClick={() => setSidebarToggle(true)}
+          onClick={() => setIsVisible(!isVisible)}
           className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         >
           <span className="sr-only">Open sidebar</span>
@@ -76,7 +87,7 @@ const Sidebar = ({ component }) => {
 
         <aside
           className={`fixed left-0 z-40 w-64 h-screen transition-transform ${
-            sidebarToggle ? "" : "-translate-x-full sm:translate-x-0"
+            isVisible ? "" : "-translate-x-full sm:translate-x-0"
           }`}
         >
           <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
@@ -108,14 +119,23 @@ const Sidebar = ({ component }) => {
                   </li>
                 )
               })}
+
+              <li onClick={logoutHandler} className=" hover:border-b-2 mt-2 cursor-pointer  border-solid">
+                <p
+                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                >
+                  <TbLogout2 />
+                  <span className="flex-1 ms-3 whitespace-nowrap">
+                    Logout
+                  </span>
+                </p>
+              </li>
             </ul>
           </div>
         </aside>
 
-        <div className="p-4 sm:ml-64">
-          <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-            {component}
-          </div>
+        <div className="sm:ml-64">
+          <div className="">{component}</div>
         </div>
       </div>
     </div>

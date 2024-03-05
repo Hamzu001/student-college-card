@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose"
-
+ 
 const studentCardSchema = new Schema(
   {
     name: {
@@ -22,7 +22,7 @@ const studentCardSchema = new Schema(
       required: true,
     },
 
-    rollNo: {
+    rollNumber: {
       type: String,
       required: true,
     },
@@ -37,14 +37,9 @@ const studentCardSchema = new Schema(
       required: true,
     },
 
-    photo: {
+    image: {
       type: String,
       required: true,
-    },
-
-    date: {
-      type: Date,
-      default: Date.now,
     },
 
     user: {
@@ -55,4 +50,4 @@ const studentCardSchema = new Schema(
   { timestamps: true }
 )
 
-export const Card = mongoose.model("Card", studentCardSchema)
+export const StudentCard = mongoose.model("StudentCard", studentCardSchema)

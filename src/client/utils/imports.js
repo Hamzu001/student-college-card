@@ -1,7 +1,7 @@
 import { Context } from "../components/Context.jsx"
 import Courses from "../components/Courses/Courses.jsx"
 import Navbar from "../components/Header/Navbar.jsx"
-import Home from "../components/Home.jsx"
+import Home from "../components/Home/Home.jsx"
 import Oops from "../components/Oops.jsx"
 import SignIn from "../components/SignIn/SignIn.jsx"
 import SignUp from "../components/SignUp/SignUp.jsx"
@@ -10,7 +10,9 @@ import Enrolled from "../components/studentPortal/Enrolled.jsx"
 import Notifications from "../components/studentPortal/Notifications.jsx"
 import Quizes from "../components/studentPortal/Quizes.jsx"
 import Sidebar from "../components/studentPortal/Sidebar.jsx"
-import Register from "../components/studentPortal/StudentCard/Register.jsx"
+import CreateCollegeCard from "../components/studentPortal/StudentCard/CreateCollegeCard.jsx"
+import GetCollegeCard from "../components/studentPortal/StudentCard/GetCollegeCard.jsx"
+import Footer from "../components/footer/Footer.jsx"
 //////////////////////////////////////////////////
 import { capitalizeFirstLetter } from "./index.js"
 import { GiHamburgerMenu } from "react-icons/gi"
@@ -24,7 +26,8 @@ import { TbLogout2 } from "react-icons/tb"
 import { PiStudentBold } from "react-icons/pi"
 
 export {
-  Register,
+  GetCollegeCard,
+  CreateCollegeCard,
   Sidebar,
   Quizes,
   Notifications,
@@ -35,6 +38,7 @@ export {
   Oops,
   Home,
   Navbar,
+  Footer,
   Courses,
   Context,
   capitalizeFirstLetter,

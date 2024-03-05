@@ -1,9 +1,11 @@
 import "./App.css"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Routes, Route, Navigate, Outlet } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import Loading from "./Loading.jsx"
 import {
-  Register,
+  CreateCollegeCard,
   Sidebar,
   Quizes,
   Notifications,
@@ -29,17 +31,18 @@ function App() {
     fetchData()
   }, [])
 
-  if (!user) return null
+  if (!user) return <Loading type="spinningBubbles" color="#734055" height="10%" width="10%" />
 
   return (
     <>
       <ToastContainer
-        position="top-left"
+        position="top-center"
         autoClose={3000}
         closeOnClick
         theme="light"
       />
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
@@ -49,10 +52,12 @@ function App() {
             path="/student-portal/dashboard"
             element={<Sidebar component={<Dashboard />} />}
           />
+
           <Route
-            path="/student-portal/register"
-            element={<Sidebar component={<Register />} />}
+            path="/student-portal/create-college-card"
+            element={<Sidebar component={<CreateCollegeCard />} />}
           />
+
           <Route
             path="/student-portal/enrolled"
             element={<Sidebar component={<Enrolled />} />}

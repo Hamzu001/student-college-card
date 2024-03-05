@@ -1,6 +1,7 @@
 import React from "react"
+import ReactLoading from "react-loading"
 
-const Form = ({ formSubmit }) => {
+const Form = ({ formSubmit, loading }) => {
   return (
     <div>
       <form className="space-y-4 md:space-y-6" onSubmit={formSubmit}>
@@ -70,12 +71,23 @@ const Form = ({ formSubmit }) => {
             </div>
           </div>
         </div>
-        <button
-          type="submit"
-          className="w-full bg-primary-600 hover:bg-primary-700  font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-        >
-          SignUp
-        </button>
+        {loading ? (
+          <div className=" flex justify-center">
+            <ReactLoading
+              type="cylon"
+              color="#734055"
+              height={"10%"}
+              width={"10%"}
+            />
+          </div>
+        ) : (
+          <button
+            type="submit"
+            className="w-full bg-primary-600 hover:bg-primary-700  font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          >
+            SignUp
+          </button>
+        )}
       </form>
     </div>
   )
