@@ -23,9 +23,9 @@ async function sendOtpToEmail(reseverEmail, token) {
     to: reseverEmail,
     subject: "Quiz App: Verify your email",
     html:
-      `<h2 style="color:black;text-align:center;">Quiz App send you email for otp varification<br>Your OTP is here <br> <b> <a href="${process.env.WEB_URL}/api/v1/user/verify?token=` +
+      `<h2 style="color:black;text-align:center;">GMGS ==> send you email for verify your email<br>Your verify link is here! Click To Verify<br> <b> <a href="${process.env.WEB_URL}/api/v1/user/verify?token=` +
       token +
-      `">Link Here</a>  </b> </h2>`,
+      `">Verify Email</a>  </b> </h2>`,
   }
 
   // send otp to email

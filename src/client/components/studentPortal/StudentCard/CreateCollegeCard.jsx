@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { toast } from "react-toastify"
 import Form from "./Form"
 import GetCollegeCard from "./GetCollegeCard"
-import Loading from "../../../Loading"
+import ReactLoading from "react-loading"
 
 const CreateCollegeCard = () => {
   const [cardData, setCardData] = useState({})
@@ -54,7 +54,16 @@ const CreateCollegeCard = () => {
       <div className="flex justify-center p-4 mb-2 rounded-2xl mx-4 bg-gray-200">
         Get Your College Card
       </div>
-      {step == 0 && <div>Loading</div>}
+      {step == 0 && (
+        <div className="flex justify-center pt-6 mt-2">
+          <ReactLoading
+            type="bars"
+            color="#734055"
+            height={'5%'}
+            width={'5%'}
+          />
+        </div>
+      )}
       {/* form  */}
       {step == 1 && <Form formSubmit={handleSubmit} loading={isLoading} />}
       {step == 2 && <GetCollegeCard cardDetails={cardData} />}
