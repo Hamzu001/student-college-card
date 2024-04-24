@@ -19,6 +19,7 @@ import {
   Courses,
   Context,
 } from "./utils/imports.js"
+import CourseDetails from "./components/Courses/CourseDetails.jsx"
 
 function Private({ func, path }) {
   return func() ? <Outlet /> : <Navigate to={path} replace={true} />
@@ -46,6 +47,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
+        <Route path="/courses/:id" element={<CourseDetails />} />
 
         <Route element={<Private func={() => user?.userName} path="/signin" />}>
           <Route

@@ -58,9 +58,9 @@ const SignIn = () => {
         <div className="flex flex-col items-center justify-center px-6 py-2 mx-auto lg:py-0">
           <div className="w-full rounded-lg shadow md:mt-0 sm:max-w-md">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl flex justify-center font-bold leading-tight tracking-tight text-gray-90 md:text-2xl">
+              <p className="text-xl text-[#b5594f] flex justify-center font-bold leading-tight tracking-tight md:text-2xl">
                 SignIn
-              </h1>
+              </p>
               <Form formSubmit={handleSubmit} loading={isLoading} />
             </div>
           </div>

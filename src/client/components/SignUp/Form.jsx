@@ -1,5 +1,6 @@
 import React from "react"
 import ReactLoading from "react-loading"
+import Button from "../common/Button"
 
 const Form = ({ formSubmit, loading }) => {
   return (
@@ -8,7 +9,7 @@ const Form = ({ formSubmit, loading }) => {
         <div>
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-900"
+            className="block mb-2 text-sm font-medium text-[#b5594f]"
           >
             UsernName
           </label>
@@ -16,15 +17,15 @@ const Form = ({ formSubmit, loading }) => {
             type="userName"
             name="userName"
             id="userName"
-            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
+            className="bg-gray-50 border outline-none focus:ring-2 focus:ring-red-200 focus:border-[#b5594f] border-[#b5594f] text-[#b5594f] sm:text-sm rounded-lg block w-full p-2.5"
             placeholder="username"
-            required=""
+            required
           />
         </div>
         <div>
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-900"
+            className="block mb-2 text-sm font-medium text-[#b5594f]"
           >
             Your email
           </label>
@@ -32,15 +33,15 @@ const Form = ({ formSubmit, loading }) => {
             type="email"
             name="email"
             id="email"
-            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
+            className="bg-gray-50 border outline-none focus:ring-2 focus:ring-red-200 focus:border-[#b5594f] border-[#b5594f] text-[#b5594f] sm:text-sm rounded-lg block w-full p-2.5"
             placeholder="name@gmail.com"
-            required=""
+            required
           />
         </div>
         <div>
           <label
             htmlFor="password"
-            className="block mb-2 text-sm font-medium text-gray-900"
+            className="block mb-2 text-sm font-medium text-[#b5594f]"
           >
             Password
           </label>
@@ -49,27 +50,9 @@ const Form = ({ formSubmit, loading }) => {
             name="password"
             id="password"
             placeholder="••••••••"
-            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
-            required=""
+            className="bg-gray-50 border outline-none focus:ring-2 focus:ring-red-200 focus:border-[#b5594f] border-[#b5594f] text-[#b5594f] sm:text-sm rounded-lg block w-full p-2.5"
+            required
           />
-        </div>
-        <div className="flex items-center justify-between">
-          <div className="flex items-start">
-            <div className="flex items-center h-5">
-              <input
-                id="remember"
-                aria-describedby="remember"
-                type="checkbox"
-                className="w-4 h-4 border border-gray-300 rounded"
-                required=""
-              />
-            </div>
-            <div className="ml-3 text-sm">
-              <label htmlFor="remember" className="text-gray-500">
-                Remember me
-              </label>
-            </div>
-          </div>
         </div>
         {loading ? (
           <div className=" flex justify-center">
@@ -81,12 +64,9 @@ const Form = ({ formSubmit, loading }) => {
             />
           </div>
         ) : (
-          <button
-            type="submit"
-            className="w-full bg-primary-600 hover:bg-primary-700  font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-          >
-            SignUp
-          </button>
+          <div className="flex justify-center">
+            <Button btnName="SignUp" />
+          </div>
         )}
       </form>
     </div>

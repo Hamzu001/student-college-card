@@ -2,7 +2,6 @@ import React from "react"
 import html2canvas from "html2canvas"
 
 const GetCollegeCard = ({ cardDetails }) => {
-
   const downloadJpg = () => {
     const capture = document.querySelector(".get-pdf")
     html2canvas(capture, { useCORS: true, allowTaint: true }).then((canvas) => {
@@ -60,7 +59,9 @@ const GetCollegeCard = ({ cardDetails }) => {
               </div>
             </div>
             <div className="text-center p-1 text-white text-[13px] bg-[#90b4c4]">
-                <span className="font-bold">Date to Join : {cardDetails.joinDate}</span>{" "}
+              <span className="font-bold">
+                Date to Join : {cardDetails.joinDate}
+              </span>{" "}
             </div>
           </div>
           {/* card back side   */}

@@ -11,13 +11,13 @@ const courseSchema = new Schema(
             required: true,
             uppercase: true
         },
-        courseImage:{
+        courseDescription:{
             type: String,
             required: true
         },
-        isLike:{
-            type: Boolean,
-            default: false
+        courseImage:{
+            type: String,
+            required: true
         }
     },
     { timestamps: true }

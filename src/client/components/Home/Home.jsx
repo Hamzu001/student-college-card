@@ -6,16 +6,27 @@ import Footer from "../footer/Footer.jsx"
 
 const Home = () => {
   return (
-    <div className="container">
-      <LayoutGridDemo/>
+    <div className="">
+      <LayoutGridDemo />
       <div className="pt-4">
-        <div className="flex justify-center p-5 bg-gradient-to-r from-neutral-300 to-stone-400 mx-7 rounded-2xl ">
-          <p className="text-2xl">Courses</p>
+        <div className="flex justify-center p-4">
+          <span className="cursor-pointer text-black text-3xl uppercase bg-white px-4 py-2 shadow-[0.5rem_0.5rem_#b5594f,-0.5rem_-0.5rem_#b5594f] transition">
+            Courses
+          </span>
         </div>
-      <Cards />
+        <div className="mt-4">
+          <Cards />
+        </div>
       </div>
-      <ContactUs/>
-      <Footer/>
+      <div>
+        <div className="flex justify-center pt-8">
+          <span className="cursor-pointer text-black text-3xl uppercase bg-white px-4 py-2 shadow-[0.5rem_0.5rem_#b5594f,-0.5rem_-0.5rem_#b5594f] transition">
+            Contact Us
+          </span>
+        </div>
+        <ContactUs />
+      </div>
+      <Footer />
     </div>
   )
 }

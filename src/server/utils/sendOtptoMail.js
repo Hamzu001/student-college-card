@@ -1,7 +1,6 @@
 import nodemailer from "nodemailer"
-// import { ApiError } from "./ApiError.js"
 
-async function sendOtpToEmail(reseverEmail, token) {
+async function sendOtpToEmail(receiverEmail, token) {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     port: 465,
@@ -20,7 +19,7 @@ async function sendOtpToEmail(reseverEmail, token) {
 
   let mailOptions = {
     from: process.env.AUTH_MAIL,
-    to: reseverEmail,
+    to: receiverEmail,
     subject: "Quiz App: Verify your email",
     html:
       `<h2 style="color:black;text-align:center;">GMGS ==> send you email for verify your email<br>Your verify link is here! Click To Verify<br> <b> <a href="${process.env.WEB_URL}/api/v1/user/verify?token=` +
