@@ -6,6 +6,6 @@ import app from "./app.js"
 
 const PORT = process.env.PORT || 3000
 
-ViteExpress.listen(app, PORT, () => {
+export default ViteExpress.listen(app, PORT, () => {
   console.log("Server is runing on port", PORT)
 })

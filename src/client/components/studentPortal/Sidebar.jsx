@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 import {
   Context,
   capitalizeFirstLetter,
@@ -15,10 +15,9 @@ import {
 } from "../../utils/imports.js"
 
 const Sidebar = ({ component }) => {
-  const { user } = useContext(Context)
+  const { user, setUser, isVisible } = useContext(Context)
   const navigate = useNavigate()
-  const [isVisible, setIsVisible] = useState(false)
-
+  
   const logoutHandler = async () => {
     try {
       const fetchData = await fetch("/api/v1/user/logout", {
@@ -49,12 +48,6 @@ const Sidebar = ({ component }) => {
       badge: "",
     },
     {
-      path: "/student-portal/courses",
-      logo: <PiNotebookLight />,
-      name: "Courses",
-      badge: "",
-    },
-    {
       path: "/student-portal/notifications",
       logo: <IoMdNotificationsOutline />,
       name: "Notifications",
@@ -72,26 +65,24 @@ const Sidebar = ({ component }) => {
       name: "Quizzes",
       badge: "",
     },
+    {
+      path: "/student-portal/courses",
+      logo: <PiNotebookLight />,
+      name: "Courses",
+      badge: "",
+    },
   ]
 
   return (
     <div>
       <div className="container">
-        <button
-          onClick={() => setIsVisible(!isVisible)}
-          className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        >
-          <span className="sr-only">Open sidebar</span>
-          <GiHamburgerMenu />
-        </button>
-
         <aside
           className={`fixed left-0 z-40 w-64 h-screen transition-transform ${
             isVisible ? "" : "-translate-x-full sm:translate-x-0"
           }`}
         >
-          <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-            <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-medium">
+          <div className="h-full px-3 py-4 overflow-y-auto bg-white ">
+            <div className="flex items-center p-2 text-[#b5594f] rounded-2xl  bg-white  group font-medium">
               <PiStudentBold />
               <span className="ms-3">
                 Welcome {capitalizeFirstLetter(user?.userName || "user")}
@@ -102,32 +93,37 @@ const Sidebar = ({ component }) => {
                 return (
                   <li
                     key={index}
-                    className=" hover:border-b-2 mt-2 border-solid"
+                    className="hover:border-b-2 mt-2 border-red-200 rounded-2xl border-solid"
                   >
-                    <Link
+                    <NavLink
                       to={item.path}
-                      className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                      className={({ isActive }) =>
+                        `flex items-center p-2 text-[#b5594f] ${
+                          isActive
+                            ? "bg-red-100 border-b-2 mt-2 border-red-200 border-solid"
+                            : ""
+                        } rounded-2xl hover:bg-red-100 dark:text-white dark:hover:bg-gray-700 group`
+                      }
                     >
                       {item.logo}
                       <span className="flex-1 ms-3 whitespace-nowrap">
                         {item.name}
                       </span>
-                      <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 hover:bg-gray-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                      <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-red-800 hover:bg-gray-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                         {item.badge}
                       </span>
-                    </Link>
+                    </NavLink>
                   </li>
                 )
               })}
 
-              <li onClick={logoutHandler} className=" hover:border-b-2 mt-2 cursor-pointer  border-solid">
-                <p
-                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
+              <li
+                onClick={logoutHandler}
+                className=" hover:border-b-2 mt-2 cursor-pointer  border-solid"
+              >
+                <p className="flex items-center p-2 text-[#b5594f] dark:text-white hover:bg-red-100 hover:border-b-2 mt-2 border-red-200 rounded-2xl border-solid group">
                   <TbLogout2 />
-                  <span className="flex-1 ms-3 whitespace-nowrap">
-                    Logout
-                  </span>
+                  <span className="flex-1 ms-3 whitespace-nowrap">Logout</span>
                 </p>
               </li>
             </ul>

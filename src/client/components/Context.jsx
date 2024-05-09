@@ -5,6 +5,8 @@ export const Context = createContext()
 export function ContextProvider({ children }) {
   const [user, setUser] = useState(null)
   const [cardData, setCardData] = useState(null)
+  const [titleBoard, setTitleBoard] = useState("")
+  const [isVisible, setIsVisible] = useState(false)
 
   const fetchData = async () => {
     const data = await fetch("/api/v1/user/getcurrentuser")
@@ -30,7 +32,7 @@ export function ContextProvider({ children }) {
 
   
   return (
-    <Context.Provider value={{ user, setUser, fetchData, cardData }}>
+    <Context.Provider value={{ user, setUser, fetchData, cardData, titleBoard, setTitleBoard, isVisible, setIsVisible }}>
       {children}
     </Context.Provider>
   )

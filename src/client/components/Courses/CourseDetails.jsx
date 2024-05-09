@@ -51,8 +51,12 @@ const CourseDetails = () => {
 
                   <div className="grid grid-cols-12 gap-4 m-2 mt-6 ">
                     <div className="col-span-12 md:col-span-8 mt-2">
-                      {items.courseDescription.split(".").map((txt,i) => {
-                        return <p key={i} className="mt-2">{txt}</p>
+                      {items.courseDescription.split(".").map((txt, i) => {
+                        return (
+                          <p key={i} className="mt-2">
+                            {txt}
+                          </p>
+                        )
                       })}
                     </div>
 
@@ -60,7 +64,7 @@ const CourseDetails = () => {
                       <p className="text-xl text-[#b5594f] font-semibold">
                         Latest Courses
                       </p>
-                      <SideBar/>
+                      <SideBar />
                     </div>
                   </div>
                 </div>

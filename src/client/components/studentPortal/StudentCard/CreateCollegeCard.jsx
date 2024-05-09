@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { toast } from "react-toastify"
 import Form from "./Form"
 import GetCollegeCard from "./GetCollegeCard"
 import ReactLoading from "react-loading"
+import { Context } from "../../Context"
+// import { TitleBoard } from "../Common"
 
 const CreateCollegeCard = () => {
+  const {setTitleBoard} = useContext(Context)
   const [cardData, setCardData] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [step, setStep] = useState(0)
@@ -50,12 +53,10 @@ const CreateCollegeCard = () => {
   }
 
   return (
-    <div className="container">
-      <div className="flex justify-center p-4 mb-2 rounded-2xl mx-4 bg-gray-200">
-        Get Your College Card
-      </div>
+    <div className="container py-4">
+        {/* {setTitleBoard("Get Your College Card")} */}
       {step == 0 && (
-        <div className="flex justify-center pt-6 mt-2">
+        <div className="flex justify-center">
           <ReactLoading
             type="bars"
             color="#734055"

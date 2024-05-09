@@ -1,12 +1,15 @@
-import React from "react"
+import React, { useContext } from "react"
 import Cards from "../Courses/Cards"
 import { LayoutGridDemo } from "./layoutgrid/LayoutGrid.jsx"
 import ContactUs from "../contact-us/ContactUs.jsx"
 import Footer from "../footer/Footer.jsx"
+import { Context } from "../Context.jsx"
 
 const Home = () => {
+  const { setTitleBoard } = useContext(Context)
   return (
     <div className="">
+        {/* {setTitleBoard("Home")} */}
       <LayoutGridDemo />
       <div className="pt-4">
         <div className="flex justify-center p-4">

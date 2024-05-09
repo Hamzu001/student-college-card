@@ -13,9 +13,9 @@ const GetCollegeCard = ({ cardDetails }) => {
   }
 
   return (
-    <div>
-      <div className="container pt-6 mt-6">
-        <div className="get-pdf flex-wrap gap-y-4  items-center flex py-2 justify-center">
+    <div className="container pt-14">
+      <div className="get-pdf">
+        <div className="flex-wrap gap-y-4  items-center flex py-2 justify-center">
           <div className="text-[13px] mr-6 ml-4 rounded-lg overflow-hidden h-[200px] w-[320px] md:w-[400px] md:h-[233px] bg-slate-200">
             <div className="bg-[#841d26] text-center">
               <h1 className="py-2 text-[#e49479] font-serif whitespace-pre md:text-[16px] font-bold">

@@ -20,7 +20,7 @@ async function sendOtpToEmail(receiverEmail, token) {
   let mailOptions = {
     from: process.env.AUTH_MAIL,
     to: receiverEmail,
-    subject: "Quiz App: Verify your email",
+    subject: "GMGC - Student Portal : Verify your email",
     html:
       `<h2 style="color:black;text-align:center;">GMGS ==> send you email for verify your email<br>Your verify link is here! Click To Verify<br> <b> <a href="${process.env.WEB_URL}/api/v1/user/verify?token=` +
       token +

@@ -20,6 +20,7 @@ import {
   Context,
 } from "./utils/imports.js"
 import CourseDetails from "./components/Courses/CourseDetails.jsx"
+import QuizeEnroll from "./components/studentPortal/quize/QuizeEnroll.jsx"
 
 function Private({ func, path }) {
   return func() ? <Outlet /> : <Navigate to={path} replace={true} />
@@ -42,6 +43,7 @@ function App() {
         closeOnClick
         theme="light"
       />
+      
       <Navbar />
 
       <Routes>
@@ -76,6 +78,11 @@ function App() {
             path="/student-portal/quizes"
             element={<Sidebar component={<Quizes />} />}
           />
+          <Route
+            path="/student-portal/quizes/:id"
+            element={<Sidebar component={<QuizeEnroll />} />}
+          />
+
         </Route>
 
         <Route
