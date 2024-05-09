@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div className="">
         {/* {setTitleBoard("Home")} */}
-      <LayoutGridDemo />
+      {/* <LayoutGridDemo /> */}
       <div className="pt-4">
         <div className="flex justify-center p-4">
           <span className="cursor-pointer text-black text-3xl uppercase bg-white px-4 py-2 shadow-[0.5rem_0.5rem_#b5594f,-0.5rem_-0.5rem_#b5594f] transition">
