@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import Cards from "../Courses/Cards"
-import { LayoutGridDemo } from "./layoutgrid/LayoutGrid.jsx"
+import { LayoutGridDemo } from "./homeContent/LayoutGrid.jsx"
 import ContactUs from "../contact-us/ContactUs.jsx"
 import Footer from "../footer/Footer.jsx"
 
