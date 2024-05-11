@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import { LayoutGrid } from "./Layout"
+import { LayoutGrid } from "./Layout.jsx"
 
 export function LayoutGridDemo() {
   return (
