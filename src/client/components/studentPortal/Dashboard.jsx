@@ -2,10 +2,8 @@ import React, { useContext } from "react"
 import { Context } from "../Context"
 
 const Dashboard = () => {
-  const { setTitleBoard } = useContext(Context)
   return (
     <div>
-      {/* {setTitleBoard("Student Dashboard")} */}
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-8 mx-auto">
           <div class="flex flex-wrap -m-4">
