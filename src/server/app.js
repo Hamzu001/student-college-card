@@ -1,4 +1,6 @@
 import express from "express"
+import "./ensureEnv.js"
+import "./db/index.js"
 // import cors from "cors"
 import cookieParser from "cookie-parser"
 
